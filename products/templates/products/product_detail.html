@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+    <div class="row">
+        <div class="col-sm-10 col-md-9">
+            <h3>{{ product.name }}</h3>
+            
+            {% if product.image %}
+            <img src="{{ MEDIA_URL }}{{ product.image }}"/>
+            {% endif %}
+            
+            <div class="row">
+                <div class="col-xs-9">
+                    <p>{{ product.description | linebreaksbr }}</p>
+                    <p><span class="boldtext">Brand</span> {{ product.brand }} </p>
+                    <p><span class="boldtext">Price</span> €{{ product.price }}</p>
+                    <p><span class="boldtext">Sku:</span> {{ product.sku }} </p>
+                    <p><span class="boldtext">Stock:</span> {{ product.stock }} </p>
+
+                    <a href="{% url 'home' %}" class="btn btn-default">Back to Product list</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
