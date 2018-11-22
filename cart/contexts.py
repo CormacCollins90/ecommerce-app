@@ -1,5 +1,3 @@
-
-
 def items_in_cart(request):
     cart = request.session.get('cart', {})
     

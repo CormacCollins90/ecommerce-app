@@ -21,6 +21,8 @@ from accounts.views import signup
 from products.views import product_list, product_detail
 from accounts.views import show_profile
 from cart.views import add_to_cart, view_cart, remove_from_cart
+from checkout.views import show_checkout, submit_payment
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,7 +34,11 @@ urlpatterns = [
     path('products/<int:id>', product_detail, name='product_detail'),
     path('cart/add/', add_to_cart, name='add_to_cart'),
     path('cart/view/', view_cart, name='view_cart'),
-    path('cart/remove/', remove_from_cart, name='remove_from_cart')
+    path('cart/remove/', remove_from_cart, name='remove_from_cart'),
+    path('checkout/', show_checkout, name='show_checkout'),
+    path('checkout/payment/', submit_payment, name='submit_payment')
+
+
     
 
 ]
