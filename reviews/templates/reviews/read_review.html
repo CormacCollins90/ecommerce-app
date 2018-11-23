@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+
+{% block head_styles %}
+    {{ block.super }}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="row">
+        <div class="col-md-2 col-sm-3 text-center">
+            <a class="story-img" href="#">
+                <img src="{{ MEDIA_URL}}{{ review.author.profile.image }}" class="img-circle">
+            </a>
+            <p><span class="boldtext">Author:</span> {{ review.author.username }}</p>
+        </div>
+        <div class="col-sm-10 col-md-9">
+            <h3>{{ review.title }}</h3>
+            
+            <div class="row">
+                <div class="col-xs-9">
+                    <p>{{ review.content | linebreaksbr }}</p>
+                    <p><span class="boldtext">Published on:</span> {{ review.published_date }} </p>
+                    <p><span class="boldtext">Tag:</span> history</p>
+
+                    <a href="{% url 'home' %}" class="btn btn-default">Back to product list</a>
+                    
+                    {% if can_edit %} 
+                    <a href="{% url 'edit_review' product.id %}" class="btn btn-default">Edit Review</a>
+                    {% endif %}
+
+                    {% if perms.review.can_publish %} 
+                    <a href="#" class="btn btn-default">Publish Review</a>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

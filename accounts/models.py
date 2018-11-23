@@ -8,6 +8,3 @@ class Profile(models.Model):
     
     def __str__(self):
         return "{0} {1}".format(self.user.first_name, self.user.last_name)
-from django.db import models
-
-# Create your models here.

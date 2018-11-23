@@ -22,6 +22,7 @@ from products.views import product_list, product_detail
 from accounts.views import show_profile
 from cart.views import add_to_cart, view_cart, remove_from_cart
 from checkout.views import show_checkout, submit_payment
+from reviews.views import read_review, edit_review, write_review, publish_review
 
 
 urlpatterns = [
@@ -36,9 +37,10 @@ urlpatterns = [
     path('cart/view/', view_cart, name='view_cart'),
     path('cart/remove/', remove_from_cart, name='remove_from_cart'),
     path('checkout/', show_checkout, name='show_checkout'),
-    path('checkout/payment/', submit_payment, name='submit_payment')
-
-
-    
+    path('checkout/payment/', submit_payment, name='submit_payment'),
+    path('review/read_review/', read_review, name='read_review'),
+    path('review/write_review/<int:id>', write_review, name='write_review'),
+    path('review/edit/', edit_review, name='edit_review'),
+    path('review/publish/', publish_review, name='publish_review'),
 
 ]
